@@ -149,6 +149,16 @@ main {
 /* Footer */
 footer {
   background-color: #f5f5f5;
-  padding: 10px;
-  text-align: center;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  gap: 20px;
+  padding-left: 20px;
 }

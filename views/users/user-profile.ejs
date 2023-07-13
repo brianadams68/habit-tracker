@@ -1,4 +1,4 @@
-<% if(foundUser) { %>
+<!-- <% if(foundUser) { %>
 <h2>Welcome, <%= foundUser.username %>!</h2>
 <p>This is your profile page my friend!</p>
 <button>
@@ -6,4 +6,70 @@
 </button>
 <% } else { %>
 <p>Still no logged in user, sorry!</p>
-<% } %>
+<% } %> -->
+
+<nav>
+  <a href="#"><img src="#" alt="" /></a>
+  <h3>Trackify</h3>
+  <a href="#">Hola</a>
+  <a href="#">Hola</a>
+  <a href="#">Hola</a>
+  <a href="#">Hola</a>
+</nav>
+<div id="page-container">
+  <div id="content-wrap">
+    <main>
+      <div class="flex-row">
+        <div>
+          <form action="POST">
+            <label for="add-habit">
+              <input type="text" name="add-habit" placeholder="Add a habit" />
+            </label>
+          </form>
+        </div>
+        <div>
+          <form action="POST">
+            <label for="add-daily">
+              <input type="text" name="add-daily" placeholder="Add a Daily" />
+            </label>
+          </form>
+        </div>
+        <div>
+          <form action="POST">
+            <label for="add-todo">
+              <input type="text" name="add-todo" placeholder="Add a To Do" />
+            </label>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="flex-column" id="footer">
+  <div class="flex-row">
+    <div class="flex-column">
+      <h4>Product</h4>
+      <p>iOS App</p>
+      <p>Android App</p>
+      <p>Group Plans</p>
+      <p>How it Works</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <p>Contact Us</p>
+      <p>Press Kit</p>
+      <p>Blog</p>
+      <p>News</p>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div></div>
+</footer>
