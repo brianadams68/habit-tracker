@@ -43,7 +43,7 @@ router.post("/signup", async (req, res, next) => {
       passwordHash,
     });
 
-    res.redirect("/login");
+    res.redirect("login");
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       res.status(500).render("/signup", { errorMessage: error.message });
@@ -71,7 +71,7 @@ router.get("/login", (req, res, next) => {
 // GET login route stays untouched
 
 // POST login route ==> to process form data
-router.post("/login", (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
 
   if (email === "" || password === "") {
@@ -81,31 +81,20 @@ router.post("/login", (req, res, next) => {
     return;
   }
 
-  User.findOne({ email }) // <== check if there's user with the provided email
-    .then((user) => {
-      // <== "user" here is just a placeholder and represents the response from the DB
-      if (!user) {
-        // <== if there's no user with provided email, notify the user who is trying to login
-        res.render("auth/login", {
-          errorMessage: "Email is not registered. Try with other email.",
-        });
-        return;
-      }
-
-      // if there's a user, compare provided password
-      // with the hashed password saved in the database
-      else if (bcrypt.compareSync(password, user.passwordHash)) {
-        // if the two passwords match, render the user-profile.ejs and
-        //                   pass the user object to this view
-        //                                 |
-        //                                 V
-        res.render("users/user-profile", { user });
-      } else {
-        // if the two passwords DON'T match, render the login form again
-        // and send the error message to the user
-        res.render("auth/login", { errorMessage: "Incorrect password." });
-      }
-    })
-    .catch((error) => next(error));
+  try {
+    const foundUser = await User.findOne({ email });
+    if (!foundUser) {
+      res.render("auth/login", {
+        errorMessage: "Email is not registered. Try with other email.",
+      });
+    } else if (bcrypt.compareSync(password, foundUser.passwordHash)) {
+      res.render("users/user-profile", { foundUser });
+    } else {
+      res.render("auth/login", { errorMessage: "Incorrect password." });
+    }
+  } catch (error) {
+    console.log("There has been an error: ", error);
+  }
 });
+
 module.exports = router;
