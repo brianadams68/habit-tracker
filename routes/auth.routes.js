@@ -3,7 +3,6 @@ const router = new Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 const saltRounds = 16;
-const { default: mongoose } = require("mongoose");
 
 // GET route ==> to display the signup form to users
 router.get("/signup", (req, res) =>
@@ -58,17 +57,11 @@ router.post("/signup", async (req, res, next) => {
     }
   }
 });
-// // GET route ==> to display the userProfile
-// router.get("/userProfile", (req, res) => res.render("users/user-profile"));
 
 //GET route ==> to display the login
 router.get("/login", (req, res, next) => {
   res.render("auth/login", { errorMessage: null });
 });
-// routes/auth.routes.js
-// ... imports and both signup routes stay untouched
-
-// GET login route stays untouched
 
 // POST login route ==> to process form data
 router.post("/login", async (req, res, next) => {
@@ -96,5 +89,6 @@ router.post("/login", async (req, res, next) => {
     console.log("There has been an error: ", error);
   }
 });
+
 
 module.exports = router;

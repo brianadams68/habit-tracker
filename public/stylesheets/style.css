@@ -155,6 +155,7 @@ footer {
 .column {
   display: flex;
   flex-direction: column;
+  align-content: flex-end;
 }
 
 .flex-row {
