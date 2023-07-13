@@ -1,3 +1,37 @@
+<nav>
+  <a href="/">Home</a>
+  <h4>Trackify</h4>
+  <a href="/signup">Get Started</a>
+  <li id="to-right">
+    <a href="/login">Login</a>
+  </li>
+</nav>
 
-<h1><%= appTitle %> 🚀</h1>
-<p>Welcome Ironhacker!</p>
+<div>
+  <h1>Motivate yourself to achieve your goals.</h1>
+  <p>It's time to have fun when you get things done! Join over 4 million Trackifyers and improve your life one task at a time.</p>
+</div>
+
+<div id="container">
+  <h2 class="signup">Sign Up For Free</h2>
+  <p>Password must be 1 to 6 characters, containing at least one number, one lowercase and one uppercase letter.</p>
+  <form class="formHome" action="/signup" method="POST">
+
+    <label>
+      <input type="text" name="username" placeholder="Username" />
+    </label>
+
+    <label>
+      <input type="email" name="email" placeholder="Email" />
+    </label>
+
+    <label>
+      <input type="password" name="password" placeholder="Password" />
+    </label>
+
+    <p>By clicking the button below, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.</p>
+    <button class="homeButton" type="submit">Sign Up</button>
+  </form>
+
+</div>
+</div>
