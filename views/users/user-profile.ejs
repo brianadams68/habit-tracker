@@ -7,12 +7,10 @@
   <a href="/">Log Out</a>
 </nav>
 
-<div id="page-container">
-  <div id="content-wrap">
     <main>
-      <div class="flex-row">
+      <div class="flex-row habits-container">
         <div>
-          <form action="POST">
+          <form action="/userProfile" method="POST">
             <label for="add-habit">
               <input type="text" name="add-habit" placeholder="Add a habit" />
             </label>
@@ -34,8 +32,6 @@
         </div>
       </div>
     </main>
-  </div>
-</div>
 
 <footer class="flex-column" id="footer">
   <div class="flex-row">
