@@ -1,20 +1,38 @@
 <div id="form">
-    <h2>Signup</h2>
-    <form action="/signup" method="POST">
+  <h2 class="register"><a href="/">Trackify</a></h2>
 
-      <label>
-        <input type="text" name="username" placeholder="Username" />
-      </label>
+  <br>
 
-      <label>
-        <input type="email" name="email" placeholder="Email" />
-      </label>
+  <form action="/signup">
+    <button>Sign up with Google</button>
+    <button>Sign up with Apple</button>
+  </form>
 
-      <label>
-        <input type="password" name="password" placeholder="Password" />
-      </label>
+  <br>
+  <p> OR </p>
+  <br>
 
-      <button type="submit">Sign Up</button>
-    </form>
-  </div>
+  <form action="/signup" method="POST">
+
+    <label> Username
+      <input type="text" name="username" placeholder="Username" />
+    </label>
+
+    <label> Email
+      <input type="email" name="email" placeholder="Email" />
+    </label>
+
+    <label> Password
+      <input type="password" name="password" placeholder="Password" />
+    </label>
+    <br>
+
+    <p>By clicking the button below, you are indicating that you have read and agree to the <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>.</p>
+    <button type="submit">Join Trackify</button>
+    <a class="linkFrom" href="/login">Already have a Trackify account? Log In</a>
+  </form>
+  <% if(errorMessage) { %>
+  <p class="error"><%= errorMessage %></p>
+  <% } %>
+</div>
 </div>
