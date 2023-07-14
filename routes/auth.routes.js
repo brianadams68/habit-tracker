@@ -45,7 +45,7 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
   const passwordHash = bcrypt.hashSync(password, salt);
 
   try {
-    //creates new User
+    // creates new User
     const newUser = await User.create({
       username,
       email,
@@ -61,20 +61,19 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
         errorMessage:
           "Username and email need to be unique. Either username or email is already used",
       });
-    }
-    {
+    } else {
       next(error);
     }
   }
 });
 
 //GET /login route
-router.get("/login", (req, res, next) => {
+router.get("/login", isLoggedOut, (req, res, next) => {
   res.render("auth/login", { errorMessage: null });
 });
 
 //POST to check if user is our user
-router.post("/login", async (req, res, next) => {
+router.post("/login", isLoggedOut, async (req, res, next) => {
   const { email, password } = req.body;
   console.log("SESSION =====>", req.session);
   //

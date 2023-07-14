@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const mongoose = require("mongoose");
 
 //Require Models
 const Habit = require("../models/Habits.model");
@@ -22,7 +23,6 @@ router.get("/userProfile", isLoggedIn, async (req, res, next) => {
     habitList,
   });
 });
-
 
 //POST from userProfile
 router.post("/userProfile", isLoggedIn, async (req, res, next) => {
@@ -53,15 +53,41 @@ router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
   }
 });
 
+router.get("/userProfile/:id/edit", async (req, res, next) => {
+  const { id } = req.params;
+
+  const foundHabit = await Habit.findById(id);
+  res.render("habits/update-form", { foundHabit });
+});
+
+router.post("/userProfile/:id/edit", async (req, res, next) => {
+  const { id } = req.params;
+  const { name } = req.body;
+
+  try {
+    const updatedHabit = await Habit.findByIdAndUpdate(
+      id,
+      {
+        name: name,
+      },
+      { new: true }
+    );
+    res.redirect("/userProfile");
+  } catch (error) {
+    console.log("There has been an error: ", error);
+  }
+});
+
 //GET Acoount
 router.get("/account/:id", (req, res) => {
-console.log("account info")
-})
+  console.log("account info");
+});
 
 //POST logout
 router.post("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) next(err);
+    res.clearCookie("connect.sid");
     res.redirect("/");
   });
 });
