@@ -53,6 +53,11 @@ router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
   }
 });
 
+//GET Acoount
+router.get("/account/:id", (req, res) => {
+console.log("account info")
+})
+
 //POST logout
 router.post("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
