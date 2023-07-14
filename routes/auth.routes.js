@@ -52,7 +52,7 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
       passwordHash,
     });
 
-    res.redirect("login");
+    res.redirect("/");
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       res.status(500).render("auth/signup", { errorMessage: error.message });
@@ -69,12 +69,12 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
 });
 
 //GET /login route
-router.get("/login", isLoggedOut, (req, res, next) => {
+router.get("/login", (req, res, next) => {
   res.render("auth/login", { errorMessage: null });
 });
 
 //POST to check if user is our user
-router.post("/login", isLoggedOut, async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   console.log("SESSION =====>", req.session);
   //
