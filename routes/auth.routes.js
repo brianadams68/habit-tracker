@@ -14,7 +14,7 @@ const Habit = require("../models/Habits.model");
 const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 
 //GET /signup route
-router.get("/signup", (req, res) =>
+router.get("/signup", isLoggedOut, (req, res) =>
   res.render("auth/signup", { errorMessage: null })
 );
 
