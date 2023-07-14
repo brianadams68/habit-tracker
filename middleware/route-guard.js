@@ -1,9 +1,7 @@
-//Checks if use is loggedIn
-const isLoggedIn = (req, res, next) => 
-{console.log(req.session.currentUser);
+//Checks if user is loggedIn
+const isLoggedIn = (req, res, next) => {
   if (!req.session.currentUser) {
-    console.log("no sesion")
-    return res.redirect("/login");
+    return res.redirect("auth/login");
   }
   next();
 };
