@@ -7,31 +7,36 @@
   <a href="/">Log Out</a>
 </nav>
 
-    <main>
-      <div class="flex-row habits-container">
-        <div>
-          <form action="/userProfile" method="POST">
-            <label for="add-habit">
-              <input type="text" name="add-habit" placeholder="Add a habit" />
-            </label>
-          </form>
-        </div>
-        <div>
-          <form action="POST">
-            <label for="add-daily">
-              <input type="text" name="add-daily" placeholder="Add a Daily" />
-            </label>
-          </form>
-        </div>
-        <div>
-          <form action="POST">
-            <label for="add-todo">
-              <input type="text" name="add-todo" placeholder="Add a To Do" />
-            </label>
-          </form>
-        </div>
-      </div>
-    </main>
+<main>
+  <div class="flex-row habits-container">
+    <div class="habito1">
+      <form action="/userProfile" method="POST">
+        <label>
+          <input type="text" name="name" placeholder="Add a habit" />
+        </label>
+      </form>
+      <ul>
+        <% habitList.forEach(habit => { %>
+        <p><li><%= habit.name %></li></p>
+        <% }) %>
+      </ul>
+    </div>
+    <div>
+      <form action="POST">
+        <label for="add-daily">
+          <input type="text" name="add-daily" placeholder="Add a Daily" />
+        </label>
+      </form>
+    </div>
+    <div>
+      <form action="POST">
+        <label for="add-todo">
+          <input type="text" name="add-todo" placeholder="Add a To Do" />
+        </label>
+      </form>
+    </div>
+  </div>
+</main>
 
 <footer class="flex-column" id="footer">
   <div class="flex-row">
@@ -71,11 +76,16 @@
   <div>
     <div>
       <h3>Help Support Trackify</h3>
-      <p>Trackify is an open source project that depends on our users for support. The money you spend on gems helps us keep the servers running, maintain a small staff, develop new features, and provide incentives for our volunteers</p>
+      <p>
+        Trackify is an open source project that depends on our users for
+        support. The money you spend on gems helps us keep the servers running,
+        maintain a small staff, develop new features, and provide incentives for
+        our volunteers
+      </p>
     </div>
     <div>
       <h3>Social</h3>
-      <img src="" alt="">
+      <img src="" alt="" />
     </div>
   </div>
   <div></div>
