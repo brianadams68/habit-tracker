@@ -19,7 +19,7 @@ router.get("/signup", isLoggedOut, (req, res) =>
 );
 
 //POST from /signup
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", isLoggedOut, async (req, res, next) => {
   const { username, email, password } = req.body;
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
@@ -69,12 +69,12 @@ router.post("/signup", async (req, res, next) => {
 });
 
 //GET /login route
-router.get("/login", (req, res, next) => {
+router.get("/login", isLoggedOut, (req, res, next) => {
   res.render("auth/login", { errorMessage: null });
 });
 
 //POST to check if user is our user
-router.post("/login", async (req, res, next) => {
+router.post("/login", isLoggedOut, async (req, res, next) => {
   const { email, password } = req.body;
   console.log("SESSION =====>", req.session);
   //

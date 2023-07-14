@@ -23,8 +23,9 @@ router.get("/userProfile", isLoggedIn, async (req, res, next) => {
   });
 });
 
+
 //POST from userProfile
-router.post("/userProfile", async (req, res, next) => {
+router.post("/userProfile", isLoggedIn, async (req, res, next) => {
   try {
     //Create new Habit
     const currentUser = req.session.currentUser;
@@ -42,7 +43,7 @@ router.post("/userProfile", async (req, res, next) => {
   }
 });
 
-router.post("/userProfile/:id/delete", async (req, res, next) => {
+router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
   try {
     const { id } = req.params;
     await Habit.findByIdAndDelete(id);
@@ -53,7 +54,7 @@ router.post("/userProfile/:id/delete", async (req, res, next) => {
 });
 
 //POST logout
-router.post("/logout", (req, res) => {
+router.post("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) next(err);
     res.redirect("/");
