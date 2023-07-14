@@ -96,12 +96,11 @@ router.post("/login", async (req, res, next) => {
       req.session.currentUser = currentUser;
       res.redirect("/userProfile");
     } else {
-      res.render("auth/login", { errorMessage: "Incorrect password" });
+      res.render("auth/login", { passwordErrorMessage: "Incorrect password" });
     }
   } catch (error) {
     console.log("There has been an error: ", error);
   }
 });
-
 
 module.exports = router;

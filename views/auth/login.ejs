@@ -6,13 +6,17 @@
       <input
         name="email"
         type="email"
+        placeholder="<%= typeof errorMessage !== 'undefined' ? errorMessage : '' %>"
         required
-        value="<%= typeof errorMessage !== 'undefined' ? errorMessage : '' %>"
       />
     </label>
     <label>
       Password
-      <input name="password" type="password" required />
+      <input
+        name="password"
+        type="password"
+        placeholder="<%= typeof passwordErrorMessage !== 'undefined' ? passwordErrorMessage : ''%>"
+      />
     </label>
     <button type="submit">Login</button>
   </form>

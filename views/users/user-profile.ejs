@@ -1,15 +1,21 @@
 <%- include('../partials/userNav') %>
 <main>
   <div class="flex-row habits-container">
-    <div class="habito1">
+    <div>
       <form action="/userProfile" method="POST">
         <label>
           <input type="text" name="name" placeholder="Add a habit" />
         </label>
       </form>
-      <ul>
+      <ul class="habits-card">
         <% habitList.forEach(habit => { %>
-        <p><li><%= habit.name %></li></p>
+        <li>
+          <form action="/userProfile/<%= habit._id %>/delete" method="POST">
+            <button type="submit">D</button>
+          </form>
+          <%= habit.name %>
+          <button type="button">E</button>
+        </li>
         <% }) %>
       </ul>
     </div>
