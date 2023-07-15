@@ -53,10 +53,44 @@ router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
   }
 });
 
-//GET Acoount
-router.get("/account/:id", (req, res) => {
-console.log("account info")
+//GET Account
+router.get("/account", (req, res) => {
+res.render("users/account")
 })
+
+//GET Update account info
+router.get("/account/:id/edit", (req, res) => {
+  const userId = req.params.id;
+
+  User.findById(userId, (err, user) => {
+    if (err) {
+      // Handle error case
+      console.log(err);
+      res.render('error', { message: 'An error occurred' });
+    } else {
+      res.render('/account', { user });
+    }
+  });
+})
+
+// POST route for updating user information
+router.post('/account/:id/edit', (req, res) => {
+  const userId = req.params.id;
+  const updatedUser = {
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password
+  };
+
+  User.findByIdAndUpdate(userId, updatedUser, (err, user) => {
+    if (err) {
+      console.log(err);
+      res.render('/account', { user: updatedUser, error: 'An error occurred' });
+    } else {
+      res.redirect('/user-profile');
+    }
+  });
+});
 
 //POST logout
 router.post("/logout", isLoggedIn, (req, res) => {
@@ -65,4 +99,5 @@ router.post("/logout", isLoggedIn, (req, res) => {
     res.redirect("/");
   });
 });
+
 module.exports = router;
