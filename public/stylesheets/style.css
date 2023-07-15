@@ -1,18 +1,21 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: white;
+  background-color: #ccc;
   font-family: Arial, sans-serif;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
 /* Home page */
 nav {
   background-color: #333;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   list-style: none;
   color: #fff;
+  height: 56px;
 }
 
 nav a {
@@ -38,10 +41,6 @@ nav a:hover {
 .formHome {
   display: flex;
   flex-direction: column;
-}
-
-label {
-  margin-bottom: 10px;
 }
 
 input {
@@ -135,7 +134,51 @@ button[type="submit"]:hover {
 }
 
 /* Log In Page */
+#login-container {
+  height: 100vh;
+  overflow: hidden;
+}
 
+#login-content {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 70px;
+  padding-bottom: 56px;
+}
+
+#login-content label {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+#login-content input {
+  width: 647px;
+  height: 30px;
+  border-radius: 2px;
+  margin-bottom: 28px;
+  padding: 10px 12px;
+  font-size: 20px;
+}
+
+#login-content button {
+  width: 62px;
+  height: 32px;
+  margin: auto;
+  text-align: center;
+  border-radius: 2px;
+}
+
+#login-content a {
+  text-decoration: none;
+  color: #000;
+}
+
+.bold {
+  font-weight: 700;
+}
 /* Nav User Iterface */
 
 /* User Interface */
@@ -228,6 +271,8 @@ footer {
 
 .flex-row {
   display: flex;
+  justify-content: center;
+  margin-top: 100px;
   gap: 20px;
 }
 

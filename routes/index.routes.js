@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const mongoose = require("mongoose");
 
 //Require Models
 const Habit = require("../models/Habits.model");
@@ -52,30 +53,41 @@ router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
   }
 });
 
-//GET Account
-router.get("/account", isLoggedIn, async (req, res, next) => {
-  const currentUser = req.session.currentUser;
-  const userList = await User.find({ user: currentUser._id });
+router.get("/userProfile/:id/edit", async (req, res, next) => {
+  const { id } = req.params;
 
-  res.render("users/account");
+  const foundHabit = await Habit.findById(id);
+  res.render("habits/update-form", { foundHabit });
 });
 
-// Delete account
-router.post("/account/:id/delete", isLoggedIn, async (req, res, next) => {
+router.post("/userProfile/:id/edit", async (req, res, next) => {
+  const { id } = req.params;
+  const { name } = req.body;
+
   try {
-    const { id } = req.params;
-    console.log("Deleting user with ID:", id);
-    await User.findByIdAndDelete(id);
-    res.redirect("/");
+    const updatedHabit = await Habit.findByIdAndUpdate(
+      id,
+      {
+        name: name,
+      },
+      { new: true }
+    );
+    res.redirect("/userProfile");
   } catch (error) {
     console.log("There has been an error: ", error);
   }
 });
 
+//GET Acoount
+router.get("/account/:id", (req, res) => {
+console.log("account info")
+})
+
 //POST logout
 router.post("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) next(err);
+    res.clearCookie("connect.sid");
     res.redirect("/");
   });
 });
