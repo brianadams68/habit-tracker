@@ -1,7 +1,10 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #ccc;
+<<<<<<<<< Temporary merge branch 1
+=========
+  background-color: white;
+>>>>>>>>> Temporary merge branch 2
   font-family: Arial, sans-serif;
   background-color: #fff;
   box-sizing: border-box;
