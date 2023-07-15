@@ -30,8 +30,8 @@ router.post("/userProfile", isLoggedIn, async (req, res, next) => {
     //Create new Habit
     const currentUser = req.session.currentUser;
 
-    console.log(currentUser);
-    console.log(req.body);
+    // console.log(currentUser);
+    // console.log(req.body);
     const { name } = req.body;
     const newHabit = await Habit.create({
       name: name,
@@ -43,6 +43,7 @@ router.post("/userProfile", isLoggedIn, async (req, res, next) => {
   }
 });
 
+//DELETE HABIT
 router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -53,14 +54,15 @@ router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get("/userProfile/:id/edit", async (req, res, next) => {
+//EDIT HABIT
+router.get("/userProfile/:id/edit", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
 
   const foundHabit = await Habit.findById(id);
   res.render("habits/update-form", { foundHabit });
 });
 
-router.post("/userProfile/:id/edit", async (req, res, next) => {
+router.post("/userProfile/:id/edit", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   const { name } = req.body;
 
@@ -78,9 +80,9 @@ router.post("/userProfile/:id/edit", async (req, res, next) => {
   }
 });
 
-//GET Acoount
-router.get("/account/:id", (req, res) => {
-  console.log("account info");
+//GET account
+router.get("/account", isLoggedIn, async (req, res, next) => {
+  res.render("users/account");
 });
 
 //POST logout

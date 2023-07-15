@@ -52,7 +52,7 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
       passwordHash,
     });
 
-    res.redirect("/");
+    res.redirect("/auth/login");
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       res.status(500).render("auth/signup", { errorMessage: error.message });
