@@ -144,60 +144,6 @@ router.post("/account/:id/delete", isLoggedIn, async (req, res, next) => {
   }
 });
 
-// EDIT Account
-
-router.get("/account/:id/edit", isLoggedIn, async (req, res, next) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).send("Invalid ID");
-  }
-
-  try {
-    const changes = await User.findById(id);
-    res.render("account/updateAccount", { changes });
-  } catch (error) {
-    console.log("There has been an error: ", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-router.post("/account/:id/edit", isLoggedIn, async (req, res, next) => {
-  const { id } = req.params;
-  const { name, email, password } = req.body;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).send("Invalid ID");
-  }
-
-  try {
-    const updatedAccount = await User.findByIdAndUpdate(
-      id,
-      {
-        name: name,
-        email: email,
-        password: password,
-      },
-      { new: true }
-    );
-    res.redirect("/account");
-  } catch (error) {
-    console.log("There has been an error: ", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-//DELETE Account
-router.post("/account/:id/delete", isLoggedIn, async (req, res, next) => {
-  try {
-    await User.findByIdAndDelete(id);
-    res.redirect("./");
-  } catch (error) {
-    console.log("There has been an error: ", error);
-  }
-});
-
-
 //POST logout
 router.post("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {

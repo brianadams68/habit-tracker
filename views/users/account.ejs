@@ -3,10 +3,10 @@
   <div>
     <% changes.forEach(user => { %>
     <form action="/account/<%= user._id %>/delete" method="POST">
-      <button type="submit">Delete Account</button>
+      <button class="accountButton" type="submit">Delete Account</button>
     </form>
 
-    <button type="submit" class="btn btn-primary" onclick="window.location.href='/account/<%= user._id %>/edit'">Update Account</button>
+    <button class="accountButton" type="submit" class="btn btn-primary" onclick="window.location.href='/account/<%= user._id %>/edit'">Update Account</button>
 
     <% }) %>
   </div>

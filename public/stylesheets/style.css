@@ -7,7 +7,7 @@ body {
   font-size: 14px;
 }
 
-/* Home page */
+/* Nav Home Page */
 nav {
   background-color: #333;
   display: flex;
@@ -28,6 +28,7 @@ nav a:hover {
   background-color: #555;
 }
 
+/* Home Page */
 #container {
   max-width: 400px;
   margin: 0 auto;
@@ -179,10 +180,43 @@ button[type="submit"]:hover {
   font-weight: 700;
 }
 /* Nav User Iterface */
+.userNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #336699;
+}
+
+.userNav a {
+  text-decoration: none;
+  color: #333;
+  margin-left: 10px;
+}
+
+.userNav h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.userNav button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.userNav span {
+  color: #333;
+  margin: 0 5px;
+}
 
 /* User Interface */
 
-/* Accoutn */
+/* Account */
 .account-container {
   text-align: center;
 }
@@ -197,7 +231,7 @@ form {
   margin-bottom: 10px;
 }
 
-button {
+.accountButton {
   padding: 8px 12px;
   margin-right: 10px;
   font-size: 14px;
@@ -208,17 +242,14 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.accountButton:hover {
   background-color: #45a049;
 }
 
 /* Account Update */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  margin-top: 100px;
+  width: 60%;
+  margin: 0 auto;
   padding: 20px;
   text-align: center;
 }
@@ -229,7 +260,6 @@ h2 {
 
 form {
   margin-top: 20px;
-  width: 50%;
 }
 
 label {
