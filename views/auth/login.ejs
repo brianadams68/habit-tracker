@@ -1,23 +1,28 @@
-<div id="form">
-  <h2>Login</h2>
-  <form action="/auth/login" method="POST">
-    <label>
-      E-Mail
+<div id="login-container">
+  <div id="login-content">
+    <!-- img goes here, h1 has to be removed -->
+    <h1 style="font-size: 69px">LOGO</h1>
+    <h3 style="font-size: 31px">Trackify</h3>
+    <form action="/auth/login" method="POST">
+      <label> E-Mail </label>
       <input
         name="email"
         type="email"
         placeholder="<%= typeof errorMessage !== 'undefined' ? errorMessage : '' %>"
         required
       />
-    </label>
-    <label>
-      Password
+
+      <label> Password </label>
       <input
         name="password"
         type="password"
         placeholder="<%= typeof passwordErrorMessage !== 'undefined' ? passwordErrorMessage : ''%>"
       />
-    </label>
-    <button type="submit">Login</button>
-  </form>
+
+      <button type="submit">Login</button>
+    </form>
+    <a href="/auth/signup"
+      >Don't have a trackify account? <span class="bold">Signup</span></a
+    >
+  </div>
 </div>

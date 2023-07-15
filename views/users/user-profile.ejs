@@ -14,7 +14,10 @@
             <button type="submit">D</button>
           </form>
           <%= habit.name %>
-          <button type="button">U</button>
+          <button type="submit" class="btn btn-primary" onclick="window.location.href='/userProfile/<%= habit._id %>/edit'">
+            Edit Habit
+          </button>
+          </form>
         </li>
         <% }) %>
       </ul>

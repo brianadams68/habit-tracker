@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Update your habit</h2>
+  <form action="/userProfile/<%= foundHabit._id %>/edit" method="post">
+    <label for="name" class="form-labe"
+      >Habit
+      <input type="text" id="name" name="name" value="<%= foundHabit.name %>" />
+    </label>
+    <button type="submit" class="btn btn-primary">Add Changes!</button>
+  </form>
+</div>
