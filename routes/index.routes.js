@@ -45,7 +45,6 @@ router.post("/userProfile", isLoggedIn, async (req, res, next) => {
 
 router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
   try {
-    const { id } = req.params;
     await Habit.findByIdAndDelete(id);
     res.redirect("/userProfile");
   } catch (error) {
@@ -78,10 +77,13 @@ router.post("/userProfile/:id/edit", async (req, res, next) => {
   }
 });
 
-//GET Acoount
-router.get("/account/:id", (req, res) => {
-console.log("account info")
-})
+//GET Account
+router.get("/account", isLoggedIn, async (req, res, next) => {
+  const currentUser = req.session.currentUser;
+  const userList = await User.find({ user: currentUser._id });
+
+  res.render("users/account");
+});
 
 //POST logout
 router.post("/logout", isLoggedIn, (req, res) => {
