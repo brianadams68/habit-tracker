@@ -1,3 +1,14 @@
-<div>
-    <p>this is your account</p>
-    <img src="" alt="">
+<div class="account-container">
+    <!--Profile picture should be here instead of H1-->
+
+    <h1>Profile</h1>
+    <div>
+        <% changes.forEach(user => { %>
+            <form action="./<%= user._id %>/delete" method="POST">
+              <button type="submit">Delete Account</button>
+            </form>
+            <button type="submit" class="btn btn-primary" onclick="window.location.href='/account/<%= user._id %>/edit'">Update Account</button>
+            </form>
+          <% }) %>
+    </div>  
+  </div>
