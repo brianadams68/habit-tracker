@@ -46,7 +46,6 @@ router.post("/userProfile", isLoggedIn, async (req, res, next) => {
 //DELETE HABIT
 router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
   try {
-    const { id } = req.params;
     await Habit.findByIdAndDelete(id);
     res.redirect("/userProfile");
   } catch (error) {
@@ -93,4 +92,5 @@ router.post("/logout", isLoggedIn, (req, res) => {
     res.redirect("/");
   });
 });
+
 module.exports = router;
