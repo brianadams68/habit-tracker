@@ -318,7 +318,7 @@ button:hover {
 }
 
 /* Footer */
-footer {
+/*footer {
   background-color: greenyellow;
   width: 100%;
 }
@@ -339,4 +339,33 @@ footer {
 .information {
   display: flex;
   align-content: space-between;
+}*/
+
+footer {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.information {
+  flex: 0 0 calc(20% - 10px);
+  margin-bottom: 20px;
+}
+
+footer h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
 }
