@@ -92,7 +92,6 @@ router.get("/account", isLoggedIn, async (req, res, next) => {
 });
 
 // EDIT Account
-
 router.get("/account/:id/edit", isLoggedIn, async (req, res, next) => {
   const { id } = req.params;
 
