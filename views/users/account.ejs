@@ -1,19 +1,18 @@
 <div class="account-container">
-    <h1>Profile</h1>
-    <form action="/account" method="post">
-      <label for="name">Username</label>
-      <input type="text" id="name" name="name" required><br><br>
-  
-      <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" required><br><br>
-  
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required><br><br>
-  
-      <input type="submit" value="Update Account">
-    </form>
-    <br>
-    <form action="/" method="post">
-        <button>Delete Account</button>
-    </form>
+  <h1>Profile</h1>
+  <form action="/account" method="post">
+    <label for="name">Username</label>
+    <input type="text" id="name" name="name"><br><br>
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email"><br><br>
+
+    <label for=" password">Password</label>
+    <input type="password" id="password" name="password" placeholder="********"><br><br>
+  </form>
+  <br>
+  <form action="/account/<%= userList._id %>/delete" method="POST">
+    <button type="submit">Delete Account</button>
+  </form>
+
 </div>

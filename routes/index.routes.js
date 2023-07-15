@@ -23,7 +23,6 @@ router.get("/userProfile", isLoggedIn, async (req, res, next) => {
   });
 });
 
-
 //POST from userProfile
 router.post("/userProfile", isLoggedIn, async (req, res, next) => {
   try {
@@ -54,42 +53,23 @@ router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
 });
 
 //GET Account
-router.get("/account", (req, res) => {
-res.render("users/account")
-})
+router.get("/account", isLoggedIn, async (req, res, next) => {
+  const currentUser = req.session.currentUser;
+  const userList = await User.find({ user: currentUser._id });
 
-//GET Update account info
-router.get("/account/:id/edit", (req, res) => {
-  const userId = req.params.id;
+  res.render("users/account");
+});
 
-  User.findById(userId, (err, user) => {
-    if (err) {
-      // Handle error case
-      console.log(err);
-      res.render('error', { message: 'An error occurred' });
-    } else {
-      res.render('/account', { user });
-    }
-  });
-})
-
-// POST route for updating user information
-router.post('/account/:id/edit', (req, res) => {
-  const userId = req.params.id;
-  const updatedUser = {
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password
-  };
-
-  User.findByIdAndUpdate(userId, updatedUser, (err, user) => {
-    if (err) {
-      console.log(err);
-      res.render('/account', { user: updatedUser, error: 'An error occurred' });
-    } else {
-      res.redirect('/user-profile');
-    }
-  });
+// Delete account
+router.post("/account/:id/delete", isLoggedIn, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    console.log("Deleting user with ID:", id);
+    await User.findByIdAndDelete(id);
+    res.redirect("/");
+  } catch (error) {
+    console.log("There has been an error: ", error);
+  }
 });
 
 //POST logout
