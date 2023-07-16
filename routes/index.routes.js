@@ -45,6 +45,7 @@ router.post("/userProfile", isLoggedIn, async (req, res, next) => {
 
 //DELETE HABIT
 router.post("/userProfile/:id/delete", isLoggedIn, async (req, res, next) => {
+  const { id } = req.params;
   try {
     await Habit.findByIdAndDelete(id);
     res.redirect("/userProfile");
