@@ -7,70 +7,52 @@ body {
   font-size: 14px;
 }
 
-/* Home page */
-nav {
-  background-color: #333;
+/* Nav Home Page */
+.homeNav {
   display: flex;
-  justify-content: space-between;
-  list-style: none;
-  color: #fff;
-  height: 56px;
+  align-items: center;
+  background: linear-gradient(to right, #6699FF, #000000, #6699FF);
+  gap: 20px;
 }
 
-nav a {
-  color: #fff;
+.homeNav img {
+  width: 100px;
+  height: 100px;
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+.homeNav a {
   text-decoration: none;
-  padding: 5px 10px;
+  color: black;
+  margin-top: 41px;
+  margin-left: 60px;
+}
+
+.homeNav a:hover {
+  text-decoration: underline;
+}
+
+.homeNav #to-right {
+  margin-left: auto;
+  list-style-type: none;
+}
+
+.homeNav #to-right a {
+  background-color: #ff4136;
+  color: #ffffff;
   margin-right: 10px;
-}
-
-nav a:hover {
-  background-color: #555;
-}
-
-#container {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.signup {
-  text-align: center;
-}
-
-.formHome {
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  padding: 5px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  width: 100%;
-}
-
-.homeButton {
-  padding: 8px 12px;
-  background-color: #4caf50;
-  color: white;
   border: none;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
-.homeButton:hover {
-  background-color: #45a049;
+.homeNav #to-right a:hover {
+  background-color: #d30f0d;
 }
 
-.error {
-  color: #d8000c;
-  background-color: #ffbaba;
-  padding: 10px;
-  border: 1px solid #d8000c;
-  border-radius: 4px;
-  margin-top: 10px;
-}
+/* Home Page */
 
 /* Form Sign Up or Register */
 #form {
@@ -179,58 +161,138 @@ button[type="submit"]:hover {
   font-weight: 700;
 }
 /* Nav User Iterface */
-
-/* User Interface */
-
-/* Accoutn */
-.account-container {
-  width: 500px;
-  margin: 0 auto;
-  margin-top: 250px;
-}
-
-.account-container h1 {
-  font-size: 34px;
-  text-align: center;
-  margin-bottom: 70px;
-}
-
-.account-container label {
-  display: block;
-  text-align: left;
-  margin-bottom: 10px;
-}
-
-.account-container input[type="text"],
-.account-container input[type="email"],
-.account-container input[type="password"] {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-}
-
-.account-container input[type="text"],
-.account-container input[type="email"],
-.account-container input[type="password"] {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-}
-
-.account-container input[type="submit"],
-.account-container button {
-  align-self: center;
-  width: 30%;
+.userNav {
+  background-color: #6f6969;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
   padding: 10px;
-  background-color: #4caf50;
-  color: white;
+}
+
+.userNav img {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.userNav a {
+  text-decoration: none;
+  color: #ffffff;
+  margin-right: 20px;
+}
+
+.userNav a:hover {
+  text-decoration: underline;
+}
+
+.userNav form {
+  margin-left: auto;
+}
+
+.userNav button {
+  background-color: #ff4136;
+  color: #ffffff;
   border: none;
-  border-radius: 8px;
+  padding: 8px 16px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.account-container input[type="submit"]:hover,
-.account-container button:hover {
+.userNav button:hover {
+  background-color: #d30f0d;
+}
+
+/* User Interface */
+
+/* Account */
+.account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.account-container img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.account-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.account-container button.accountButton,
+.account-container button.btn-primary {
+  background-color: #0074d9;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.account-container button.accountButton:hover,
+.account-container button.btn-primary:hover {
+  background-color: #005da5;
+}
+
+/* Account Update */
+.container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
   background-color: #45a049;
 }
 
@@ -258,24 +320,30 @@ button[type="submit"]:hover {
 
 /* Footer */
 footer {
-  background-color: greenyellow;
-  width: 100%;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-end;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 
 .flex-row {
   display: flex;
-  justify-content: center;
-  margin-top: 100px;
-  gap: 20px;
+  justify-content: space-between;
 }
 
 .information {
-  display: flex;
-  align-content: space-between;
+  flex: 0 0 calc(20% - 10px);
+  margin-bottom: 20px;
+}
+
+footer h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
 }

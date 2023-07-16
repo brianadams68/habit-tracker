@@ -23,7 +23,8 @@ const userSchema = new Schema(
     habits: [{
       type: Schema.Types.ObjectId,
       ref: "Habit"
-    }]
+    }],
+    image: String,
   },
   {
     timestamps: true,

@@ -1,18 +1,9 @@
 <div id="form">
-  <h2 class="register"><a href="/">Trackify</a></h2>
+  <a href="/"><img src="/images/Trackify.png" alt="Logo"></a>
 
   <br>
 
-  <form action="/auth/signup">
-    <button>Sign up with Google</button>
-    <button>Sign up with Apple</button>
-  </form>
-
-  <br>
-  <p> OR </p>
-  <br>
-
-  <form action="/auth/signup" method="POST">
+  <form action="/auth/signup" method="POST" enctype="multipart/form-data">
 
     <label> Username
       <input type="text" name="username" placeholder="Username" />
@@ -24,6 +15,10 @@
 
     <label> Password
       <input type="password" name="password" placeholder="Password" />
+    </label>
+
+    <label for="">
+      <input type="file" name="image" accept="image/png, image/jpg" />
     </label>
     <br>
 

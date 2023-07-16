@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Update Account</h2>
+  <form action="/account/<%= changes._id %>/edit" method="post">
+    <label for="username">Username
+      <input type="text" name="username" value="<%= changes.username %>" />
+    </label>
+    <label for="email">E-mail
+      <input type="email" name="email" value="<%= changes.email %>" />
+    </label>
+    <label for="password">Password
+      <input type="password" name="password" value="<%= changes.password %>" />
+    </label>
+    <label for="image">
+      <input type="file" name="image" accept="image/png, image/jpg" value="<%= changes.image%>" />
+    </label>
+    <button type="submit" class="btn btn-primary">Update Account!</button>
+  </form>
+</div>
