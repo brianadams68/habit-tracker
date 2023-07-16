@@ -2,6 +2,7 @@
 const { Router } = require("express");
 const router = new Router();
 const { default: mongoose } = require("mongoose");
+const uploader = require("../config/cloudinary.config.js");
 
 //require bcrypt
 const bcrypt = require("bcryptjs");
@@ -19,53 +20,60 @@ router.get("/signup", isLoggedOut, (req, res) =>
 );
 
 //POST from /signup
-router.post("/signup", isLoggedOut, async (req, res, next) => {
-  const { username, email, password } = req.body;
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+router.post(
+  "/signup",
+  uploader.single("image"),
+  isLoggedOut,
+  async (req, res, next) => {
+    const { username, email, password } = req.body;
+    const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+    const image = req.file.path;
 
-  // Make sure users fill all mandatory fields:
-  if (!username || !email || !password) {
-    res.render("auth/signup", {
-      errorMessage:
-        "All fields are mandatory. Please provide your username, email, and password.",
-    });
-    return;
-  }
-  if (!regex.test(password)) {
-    res.status(500).render("auth/signup", {
-      errorMessage:
-        "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
-    });
-    return;
-  }
-
-  // Encrypting
-  const saltRounds = 13;
-  const salt = bcrypt.genSaltSync(saltRounds);
-  const passwordHash = bcrypt.hashSync(password, salt);
-
-  try {
-    // creates new User
-    const newUser = await User.create({
-      username,
-      email,
-      passwordHash,
-    });
-
-    res.redirect("/auth/login");
-  } catch (error) {
-    if (error instanceof mongoose.Error.ValidationError) {
-      res.status(500).render("auth/signup", { errorMessage: error.message });
-    } else if (error.code === 11000) {
+    // Make sure users fill all mandatory fields:
+    if (!username || !email || !password) {
+      res.render("auth/signup", {
+        errorMessage:
+          "All fields are mandatory. Please provide your username, email, and password.",
+      });
+      return;
+    }
+    if (!regex.test(password)) {
       res.status(500).render("auth/signup", {
         errorMessage:
-          "Username and email need to be unique. Either username or email is already used",
+          "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
       });
-    } else {
-      next(error);
+      return;
+    }
+
+    // Encrypting
+    const saltRounds = 13;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const passwordHash = bcrypt.hashSync(password, salt);
+
+    try {
+      // creates new User
+      const newUser = await User.create({
+        username,
+        email,
+        passwordHash,
+        image,
+      });
+
+      res.redirect("/auth/login");
+    } catch (error) {
+      if (error instanceof mongoose.Error.ValidationError) {
+        res.status(500).render("auth/signup", { errorMessage: error.message });
+      } else if (error.code === 11000) {
+        res.status(500).render("auth/signup", {
+          errorMessage:
+            "Username and email need to be unique. Either username or email is already used",
+        });
+      } else {
+        next(error);
+      }
     }
   }
-});
+);
 
 //GET /login route
 router.get("/login", isLoggedOut, (req, res, next) => {
