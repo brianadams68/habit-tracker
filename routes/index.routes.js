@@ -81,7 +81,74 @@ router.post("/userProfile/:id/edit", isLoggedIn, async (req, res, next) => {
 
 //GET account
 router.get("/account", isLoggedIn, async (req, res, next) => {
-  res.render("users/account");
+  const currentUser = req.session.currentUser;
+  const changes = await User.find({ _id: currentUser._id });
+
+  res.render("users/account", {
+    userInSession: req.session.currentUser,
+    changes,
+  });
+  console.log(changes);
+});
+
+// EDIT Account
+router.get("/account/:id/edit", isLoggedIn, async (req, res, next) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).send("Invalid ID");
+  }
+
+  try {
+    const changes = await User.findById(id);
+    res.render("account/updateAccount", { changes });
+  } catch (error) {
+    console.log("There has been an error: ", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+router.post("/account/:id/edit", isLoggedIn, async (req, res, next) => {
+  const { id } = req.params;
+  const { username, email, password } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).send("Invalid ID");
+  }
+
+  try {
+    const updatedAccount = await User.findByIdAndUpdate(
+      id,
+      {
+        username: username,
+        email: email,
+        password: password,
+      },
+      { new: true }
+    );
+    res.redirect("/account");
+  } catch (error) {
+    console.log("There has been an error: ", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//DELETE Account
+router.post("/account/:id/delete", isLoggedIn, async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    await User.findByIdAndDelete(id);
+    req.session.destroy((err) => {
+      if (err) {
+        console.log("Error destroying session: ", err);
+      }
+    });
+    res.redirect("/");
+    res.clearCookie("connect.sid");
+    res.status(200).json({ message: "Account deleted successfully." });
+  } catch (error) {
+    console.log("There has been an error: ", error);
+  }
 });
 
 //POST logout
