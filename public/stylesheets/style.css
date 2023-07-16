@@ -11,18 +11,22 @@ body {
 .homeNav {
   display: flex;
   align-items: center;
+  background: linear-gradient(to right, #6699FF, #000000, #6699FF);
   gap: 20px;
 }
 
 .homeNav img {
   width: 100px;
   height: 100px;
+  margin-left: 40px;
   margin-top: 10px;
 }
 
 .homeNav a {
   text-decoration: none;
   color: black;
+  margin-top: 41px;
+  margin-left: 60px;
 }
 
 .homeNav a:hover {

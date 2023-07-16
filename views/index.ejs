@@ -7,7 +7,7 @@
 <div id="container">
   <h2 class="signup">Sign Up For Free</h2>
   <p>Password must be 1 to 6 characters, containing at least one number, one lowercase and one uppercase letter.</p>
-  <form class="formHome" action="/auth/signup" method="POST">
+  <form class="formHome" action="/auth/signup" method="POST" enctype="multipart/form-data">
 
     <label>
       <input type="text" name="username" placeholder="Username" />
@@ -19,6 +19,10 @@
 
     <label>
       <input type="password" name="password" placeholder="Password" />
+    </label>
+
+    <label for="">
+      <input type="file" name="image" accept="image/png, image/jpg"/>
     </label>
 
     <p>By clicking the button below, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.</p>

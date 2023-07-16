@@ -2,6 +2,7 @@
   <img src="/images/Trackify.png" alt="Logo">
   <div>
     <% changes.forEach(user => { %>
+    <img src=<%- user.image %> alt="image">
     <form action="/account/<%= user._id %>/delete" method="POST">
       <button class="accountButton" type="submit">Delete Account</button>
     </form>
