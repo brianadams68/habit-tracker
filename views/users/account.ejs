@@ -1,12 +1,12 @@
 <div class="account-container">
-  <h1>Profile</h1>
+  <img src="/images/Trackify.png" alt="Logo">
   <div>
     <% changes.forEach(user => { %>
     <form action="/account/<%= user._id %>/delete" method="POST">
       <button class="accountButton" type="submit">Delete Account</button>
     </form>
 
-    <button class="accountButton" type="submit" class="btn btn-primary" onclick="window.location.href='/account/<%= user._id %>/edit'">Update Account</button>
+    <button type="submit" class="btn btn-primary" onclick="window.location.href='/account/<%= user._id %>/edit'">Update Account</button>
 
     <% }) %>
   </div>

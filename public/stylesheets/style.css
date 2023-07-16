@@ -8,70 +8,47 @@ body {
 }
 
 /* Nav Home Page */
-nav {
-  background-color: #333;
+.homeNav {
   display: flex;
-  justify-content: space-between;
-  list-style: none;
-  color: #fff;
-  height: 56px;
+  align-items: center;
+  gap: 20px;
 }
 
-nav a {
-  color: #fff;
+.homeNav img {
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+}
+
+.homeNav a {
   text-decoration: none;
-  padding: 5px 10px;
-  margin-right: 10px;
+  color: black;
 }
 
-nav a:hover {
-  background-color: #555;
+.homeNav a:hover {
+  text-decoration: underline;
+}
+
+.homeNav #to-right {
+  margin-left: auto;
+  list-style-type: none;
+}
+
+.homeNav #to-right a {
+  background-color: #ff4136;
+  color: #ffffff;
+  margin-right: 10px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.homeNav #to-right a:hover {
+  background-color: #d30f0d;
 }
 
 /* Home Page */
-#container {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.signup {
-  text-align: center;
-}
-
-.formHome {
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  padding: 5px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  width: 100%;
-}
-
-.homeButton {
-  padding: 8px 12px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.homeButton:hover {
-  background-color: #45a049;
-}
-
-.error {
-  color: #d8000c;
-  background-color: #ffbaba;
-  padding: 10px;
-  border: 1px solid #d8000c;
-  border-radius: 4px;
-  margin-top: 10px;
-}
 
 /* Form Sign Up or Register */
 #form {
@@ -181,69 +158,89 @@ button[type="submit"]:hover {
 }
 /* Nav User Iterface */
 .userNav {
+  background-color: #6f6969;
+  color: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 10px;
-  background-color: #336699;
+}
+
+.userNav img {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
 }
 
 .userNav a {
   text-decoration: none;
-  color: #333;
-  margin-left: 10px;
+  color: #ffffff;
+  margin-right: 20px;
 }
 
-.userNav h3 {
-  font-size: 20px;
-  margin: 0;
+.userNav a:hover {
+  text-decoration: underline;
+}
+
+.userNav form {
+  margin-left: auto;
 }
 
 .userNav button {
-  padding: 8px 12px;
-  font-size: 14px;
-  background-color: #4caf50;
-  color: #fff;
+  background-color: #ff4136;
+  color: #ffffff;
   border: none;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.userNav span {
-  color: #333;
-  margin: 0 5px;
+.userNav button:hover {
+  background-color: #d30f0d;
 }
 
 /* User Interface */
 
 /* Account */
 .account-container {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-h1 {
-  font-size: 24px;
+.account-container img {
+  width: 200px;
+  height: 200px;
   margin-bottom: 20px;
 }
 
-form {
-  display: inline-block;
-  margin-bottom: 10px;
+.account-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.accountButton {
-  padding: 8px 12px;
-  margin-right: 10px;
-  font-size: 14px;
-  background-color: #4caf50;
-  color: #fff;
+.account-container button.accountButton,
+.account-container button.btn-primary {
+  background-color: #0074d9;
+  color: #ffffff;
   border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.accountButton:hover {
-  background-color: #45a049;
+.account-container button.accountButton:hover,
+.account-container button.btn-primary:hover {
+  background-color: #005da5;
 }
 
 /* Account Update */
@@ -318,29 +315,6 @@ button:hover {
 }
 
 /* Footer */
-/*footer {
-  background-color: greenyellow;
-  width: 100%;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-end;
-}
-
-.flex-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-  gap: 20px;
-}
-
-.information {
-  display: flex;
-  align-content: space-between;
-}*/
-
 footer {
   background-color: #f2f2f2;
   padding: 20px;
