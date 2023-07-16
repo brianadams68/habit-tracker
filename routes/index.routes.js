@@ -140,13 +140,11 @@ router.post("/account/:id/delete", isLoggedIn, async (req, res, next) => {
   try {
     await User.findByIdAndDelete(id);
     req.session.destroy((err) => {
-      if (err) {
-        console.log("Error destroying session: ", err);
-      }
+      if (err) next(err);
+      res.clearCookie("connect.sid");
+      res.redirect("/");
     });
-    res.redirect("/");
-    res.clearCookie("connect.sid");
-    res.status(200).json({ message: "Account deleted successfully." });
+    res.redirect("/userProfile");
   } catch (error) {
     console.log("There has been an error: ", error);
   }
