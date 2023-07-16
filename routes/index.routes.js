@@ -144,7 +144,7 @@ router.post("/account/:id/delete", isLoggedIn, async (req, res, next) => {
       }
     });
     res.redirect("/");
-    res.clearCookie("session");
+    res.clearCookie("connect.sid");
     res.status(200).json({ message: "Account deleted successfully." });
   } catch (error) {
     console.log("There has been an error: ", error);

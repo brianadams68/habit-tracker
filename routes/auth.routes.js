@@ -2,7 +2,6 @@
 const { Router } = require("express");
 const router = new Router();
 const { default: mongoose } = require("mongoose");
-const uploader = require("../config/cloudinary.config.js");
 
 //require bcrypt
 const bcrypt = require("bcryptjs");
@@ -20,10 +19,10 @@ router.get("/signup", isLoggedOut, (req, res) =>
 );
 
 //POST from /signup
-router.post("/signup", uploader.single("image"), isLoggedOut, async (req, res, next) => {
+router.post("/signup", isLoggedOut, async (req, res, next) => {
   const { username, email, password } = req.body;
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  const image = req.file.path;
+
   // Make sure users fill all mandatory fields:
   if (!username || !email || !password) {
     res.render("auth/signup", {
@@ -39,7 +38,7 @@ router.post("/signup", uploader.single("image"), isLoggedOut, async (req, res, n
     });
     return;
   }
- 
+
   // Encrypting
   const saltRounds = 13;
   const salt = bcrypt.genSaltSync(saltRounds);
@@ -51,7 +50,6 @@ router.post("/signup", uploader.single("image"), isLoggedOut, async (req, res, n
       username,
       email,
       passwordHash,
-      image,
     });
 
     res.redirect("/auth/login");
