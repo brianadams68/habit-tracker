@@ -104,7 +104,7 @@ router.post("/login", isLoggedOut, async (req, res, next) => {
       res.redirect("/userProfile");
     } else {
       res.render("auth/login", { passwordErrorMessage: "Incorrect password" });
-    }
+    } return;
   } catch (error) {
     console.log("There has been an error: ", error);
   }
