@@ -14,33 +14,32 @@
   <nav class="interfaceNav">
     <img src="/images/userProfile.png" class="logo">
     <ul>
-      <li><a href="/account">User Account</a></li>
       <li>
         <form id="logout-form" action="/logout" method="POST">
           <button>Logout</button>
         </form>
       </li>
     </ul>
-    <img src="/images/Trackify.png" class="user">
+    <img src="/images/Trackify.png" class="user-pic" onclick="toggleMenu()">
 
-    <div class="sub-menu-wrap">
-      <div class="sub-manu">
+    <div class="sub-menu-wrap" id="subMenu">
+      <div class="sub-menu">
         <div class="user-info">
           <img src="/images/Trackify.png">
           <h3>User name</h3>
         </div>
         <hr>
 
-        <a href="" class="sub-menu-link">
-          <img src="/images/userProfile.png" alt="">
+        <a href="/account" class="sub-menu-link">
+          <img src="/images/userProfile.png">
           <p>Edit Profile</p>
           <span>></span>
         </a>
-        <a href="">
-          <img src="/images/logout.png" alt="">
+        <form action="/logout" method="POST" class="sub-menu-link">
+          <img src="/images/logout.png">
           <p>Logout</p>
           <span>></span>
-        </a>
+        </form>
       </div>
     </div>
 
