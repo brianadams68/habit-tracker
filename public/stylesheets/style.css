@@ -11,7 +11,7 @@ body {
 .homeNav {
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #6699FF, #000000, #6699FF);
+  background: linear-gradient(to right, #6699ff, #000000, #6699ff);
   gap: 20px;
 }
 
@@ -162,45 +162,73 @@ button[type="submit"]:hover {
 }
 /* Nav User Iterface */
 .userNav {
-  background-color: #6f6969;
-  color: #ffffff;
+  width: 100%;
+  background: #eceaff;
+  color: #525252;
+}
+
+.interfaceNav {
+  background: #1a1a1a;
+  width: 100%;
+  padding: 10px 10%;
   display: flex;
   align-items: center;
-  padding: 10px;
+  justify-content: space-between;
+  position: relative;
 }
 
-.userNav img {
-  margin-top: 10px;
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
+.logo {
+  width: 90px;
 }
-
-.userNav a {
-  text-decoration: none;
-  color: #ffffff;
-  margin-right: 20px;
-}
-
-.userNav a:hover {
-  text-decoration: underline;
-}
-
-.userNav form {
-  margin-left: auto;
-}
-
-.userNav button {
-  background-color: #ff4136;
-  color: #ffffff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+.user {
+  width: 120px;
+  border-radius: 50%;
   cursor: pointer;
+  margin-left: 30px;
 }
 
-.userNav button:hover {
-  background-color: #d30f0d;
+nav ul {
+  width: 100%;
+  text-align: right;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.sub-menu-wrap {
+  position: absolute;
+  top: 100%;
+  right: 10%;
+  width: 320%;
+}
+
+.sub-manu {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info h3 {
+  font-weight: 500;
+}
+
+.user-info img {
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
 /* User Interface */
